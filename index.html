@@ -15,9 +15,10 @@
   --primary: #3157d5;
   --primary-light: #eaf0ff;
   --border: #dfe5ef;
-  --green: #16835d;
+  --green: #178354;
+  --green-bg: #e6f7ed;
   --red: #c43c4b;
-  --shadow: 0 12px 35px rgba(24, 43, 80, .08);
+  --shadow: 0 12px 35px rgba(24,43,80,.08);
 }
 
 * { box-sizing: border-box; }
@@ -27,7 +28,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.55;
+  line-height: 1.65;
 }
 
 button, input, textarea { font: inherit; }
@@ -35,78 +36,82 @@ button, input, textarea { font: inherit; }
 button {
   border: 0;
   cursor: pointer;
-  transition: .18s;
 }
 
 button:disabled {
-  opacity: .5;
+  opacity: .55;
   cursor: not-allowed;
 }
 
+[hidden] { display: none !important; }
+
 .topbar {
+  padding: 22px max(18px, calc((100% - 1150px) / 2));
   background: #172440;
   color: white;
-  padding: 23px max(20px, calc((100% - 1200px) / 2));
 }
 
 .topbar h1 {
+  font-size: 24px;
   margin: 0;
-  font-size: 25px;
-  letter-spacing: .3px;
+  letter-spacing: .5px;
 }
 
 .topbar p {
-  margin: 5px 0 0;
   color: #c9d3e8;
-  font-size: 14px;
+  font-size: 13px;
+  margin: 4px 0 0;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 25px auto;
-  padding: 0 18px 45px;
+  max-width: 1150px;
+  padding: 22px 18px 50px;
+  margin: auto;
 }
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(270px, .65fr);
-  gap: 20px;
+  grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr);
+  gap: 18px;
   align-items: start;
 }
 
 .card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 22px;
+  border-radius: 15px;
+  padding: 21px;
   box-shadow: var(--shadow);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   min-width: 0;
 }
 
-h2 { margin: 0 0 7px; font-size: 20px; }
-h3 { margin: 0 0 12px; font-size: 16px; }
+h2 { font-size: 20px; margin: 0 0 7px; }
+h3 { font-size: 17px; margin: 0 0 10px; }
 
 .description {
-  color: var(--muted);
   font-size: 13px;
-  margin: 0 0 17px;
+  color: var(--muted);
+  margin: 0 0 15px;
+}
+
+textarea, .text-input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  background: white;
+  color: var(--text);
+  outline: none;
 }
 
 textarea {
-  width: 100%;
-  min-height: 260px;
+  min-height: 240px;
   resize: vertical;
-  padding: 16px;
-  border: 1px solid var(--border);
-  background: #fbfcff;
-  color: var(--text);
-  border-radius: 12px;
-  outline: none;
   line-height: 1.8;
 }
 
-textarea:focus, input:focus {
+textarea:focus, .text-input:focus {
   border-color: var(--primary);
   outline: 2px solid #dce5ff;
 }
@@ -114,56 +119,45 @@ textarea:focus, input:focus {
 .button-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 15px;
+  gap: 9px;
+  margin-top: 14px;
 }
 
 .btn {
-  padding: 11px 17px;
-  border-radius: 9px;
+  padding: 10px 15px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13px;
+  border-radius: 9px;
 }
 
-.btn-primary {
-  background: var(--primary);
-  color: white;
-}
-
+.btn-primary { background: var(--primary); color: white; }
 .btn-primary:hover { background: #2445b7; }
 
-.btn-light {
-  background: var(--primary-light);
-  color: var(--primary);
-}
-
+.btn-light { background: var(--primary-light); color: var(--primary); }
 .btn-light:hover { background: #dce6ff; }
 
-.btn-neutral {
-  background: #eef1f6;
-  color: var(--text);
-}
+.btn-neutral { background: #eef1f6; color: var(--text); }
 
-.btn-small {
-  padding: 7px 10px;
-  border-radius: 7px;
+.note {
+  color: var(--muted);
   font-size: 12px;
+  margin: 10px 0 0;
 }
 
 .stats {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
   margin-top: 15px;
+  flex-wrap: wrap;
 }
 
 .stat {
   flex: 1;
-  min-width: 105px;
+  min-width: 95px;
   background: #f5f7fc;
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 11px;
+  padding: 10px;
 }
 
 .stat strong {
@@ -171,202 +165,74 @@ textarea:focus, input:focus {
   font-size: 20px;
 }
 
-.stat span {
-  color: var(--muted);
-  font-size: 12px;
+.stat span { color: var(--muted); font-size: 12px; }
+
+.text-preview {
+  margin-top: 15px;
+  padding: 15px;
+  border: 1px dashed #91a4d6;
+  border-radius: 11px;
+  background: #f8faff;
+  cursor: pointer;
+  transition: .2s;
 }
 
-.image-placeholder {
-  min-height: 220px;
+.text-preview:hover {
+  border-color: var(--primary);
+  background: #edf2ff;
+}
+
+.preview-label {
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  margin-bottom: 5px;
+}
+
+.preview-content {
+  color: #43516a;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.image-frame {
+  min-height: 185px;
   background: #f5f7fb;
-  border: 1px dashed #b9c5d9;
-  border-radius: 12px;
+  border: 1px dashed #bac5d8;
+  border-radius: 11px;
   display: grid;
   place-items: center;
-  overflow: hidden;
-  color: var(--muted);
   text-align: center;
+  color: var(--muted);
+  overflow: hidden;
   padding: 12px;
 }
 
-.image-placeholder img {
+.image-frame img {
   display: block;
   max-width: 100%;
-  max-height: 420px;
+  max-height: 330px;
   object-fit: contain;
-  border-radius: 9px;
+  border-radius: 8px;
 }
 
 .field-label {
   display: block;
-  font-size: 13px;
+  margin: 13px 0 6px;
+  font-size: 12px;
   font-weight: 700;
-  margin: 15px 0 6px;
-}
-
-.text-input {
-  width: 100%;
-  min-width: 0;
-  padding: 10px 11px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: white;
 }
 
 input[type="file"] {
-  width: 100%;
+  max-width: 100%;
   font-size: 12px;
-  margin-top: 8px;
-}
-
-.note {
-  color: var(--muted);
-  font-size: 12px;
-  margin-top: 12px;
-}
-
-#quizArea { margin-top: 20px; }
-
-.quiz-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-.tabs {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.tab {
-  padding: 10px 14px;
-  background: #eef1f7;
-  border-radius: 9px;
-  color: var(--text);
-  font-weight: 700;
-}
-
-.tab.active {
-  color: white;
-  background: var(--primary);
-}
-
-.question {
-  border: 1px solid var(--border);
-  padding: 18px;
-  border-radius: 12px;
-  margin-bottom: 14px;
-  background: white;
-}
-
-.question.correct {
-  border-color: #64bb98;
-  background: #f4fff9;
-}
-
-.question.incorrect {
-  border-color: #e7a3aa;
-  background: #fff8f8;
-}
-
-.question-heading {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  margin-bottom: 12px;
-}
-
-.question-number {
-  display: grid;
-  place-items: center;
-  flex: 0 0 30px;
-  height: 30px;
-  border-radius: 9px;
-  background: var(--primary-light);
-  color: var(--primary);
-  font-weight: 700;
-}
-
-.question-prompt {
-  font-weight: 700;
-  padding-top: 3px;
-}
-
-.context {
-  background: #f5f7fc;
-  padding: 12px;
-  border-radius: 8px;
-  margin: 10px 0;
-  line-height: 1.8;
-  overflow-wrap: anywhere;
-}
-
-.options {
-  display: grid;
-  gap: 8px;
-}
-
-.option {
-  display: flex;
-  gap: 9px;
-  align-items: flex-start;
-  border: 1px solid var(--border);
-  padding: 10px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  overflow-wrap: anywhere;
-  background: white;
-}
-
-.option:hover { border-color: #99ace6; }
-
-.option input {
-  margin-top: 5px;
-  accent-color: var(--primary);
-}
-
-.feedback {
-  margin-top: 12px;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.result-box {
-  padding: 17px;
-  background: var(--primary-light);
-  border-radius: 11px;
-  margin: 17px 0;
-}
-
-.result-box strong { font-size: 20px; }
-
-.set-navigation {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-bottom: 16px;
-}
-
-.set-button {
-  background: #eef1f7;
-  padding: 8px 12px;
-  border-radius: 8px;
-  color: var(--text);
-}
-
-.set-button.active {
-  background: var(--primary);
-  color: white;
 }
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(12, 21, 40, .38);
+  background: rgba(12,21,40,.4);
   z-index: 20;
   display: none;
 }
@@ -375,64 +241,53 @@ input[type="file"] {
 
 .drawer {
   position: fixed;
-  top: 0;
   right: 0;
-  height: 100dvh;
+  top: 0;
   width: min(510px, 96vw);
+  height: 100dvh;
   z-index: 21;
   background: white;
   box-shadow: -12px 0 35px rgba(0,0,0,.13);
-  transform: translateX(105%);
-  transition: transform .25s ease;
   display: flex;
   flex-direction: column;
+  transform: translateX(105%);
+  transition: transform .25s ease;
 }
 
 .drawer.open { transform: translateX(0); }
 
 .drawer-header {
-  padding: 20px;
-  border-bottom: 1px solid var(--border);
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
+  padding: 18px;
+  border-bottom: 1px solid var(--border);
 }
 
-.drawer-header h2 { margin-bottom: 4px; }
-
 .drawer-tools {
-  padding: 13px 18px;
+  padding: 13px 17px;
   border-bottom: 1px solid var(--border);
 }
 
 .drawer-tools .text-input { margin-bottom: 10px; }
 
 .word-list {
-  overflow-y: auto;
-  padding: 10px 18px 25px;
   flex: 1;
+  overflow-y: auto;
+  padding: 8px 17px 25px;
 }
 
 .word-row {
   display: grid;
-  grid-template-columns: minmax(75px, .75fr) 34px minmax(115px, 1fr);
-  gap: 9px;
+  grid-template-columns: minmax(75px,.75fr) 28px minmax(110px,1fr);
   align-items: center;
+  gap: 8px;
   padding: 10px 0;
   border-bottom: 1px solid #edf0f5;
 }
 
-.word-name {
-  font-weight: 700;
-  overflow-wrap: anywhere;
-}
-
-.word-count {
-  color: var(--muted);
-  text-align: center;
-  font-size: 12px;
-}
+.word-name { font-weight: 700; overflow-wrap: anywhere; }
+.word-count { font-size: 12px; color: var(--muted); text-align: center; }
 
 .word-meaning {
   min-width: 0;
@@ -440,29 +295,224 @@ input[type="file"] {
   border: 1px solid var(--border);
   border-radius: 7px;
   padding: 8px;
-  font-size: 13px;
-}
-
-.status {
   font-size: 12px;
-  color: var(--muted);
-  min-height: 18px;
-  margin-top: 8px;
 }
 
-.empty-state {
-  color: var(--muted);
-  padding: 20px;
+.status { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+#quizArea { margin-top: 20px; }
+
+.tabs, .quiz-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tab {
+  padding: 9px 13px;
+  border-radius: 8px;
+  color: var(--text);
+  background: #eef1f7;
+  font-weight: 700;
+}
+
+.tab.active { color: white; background: var(--primary); }
+
+.question {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  padding: 16px;
+  margin: 13px 0;
+  overflow-wrap: anywhere;
+}
+
+.question.correct { border-color: #64bb98; background: #f4fff9; }
+.question.incorrect { border-color: #e7a3aa; background: #fff8f8; }
+
+.question-heading {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.question-number {
+  width: 29px;
+  height: 29px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.question-prompt { font-weight: 700; padding-top: 2px; }
+
+.context {
+  padding: 12px;
+  border-radius: 9px;
+  background: #f4f6fb;
+  margin: 10px 0;
+  line-height: 1.8;
+}
+
+.options { display: grid; gap: 8px; }
+
+.option {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  background: white;
+}
+
+.option input { margin-top: 6px; accent-color: var(--primary); }
+
+.feedback { margin-top: 12px; font-size: 13px; font-weight: 700; }
+
+.result-box {
+  margin-top: 15px;
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--primary-light);
+}
+
+.result-box strong { font-size: 22px; }
+
+.set-navigation { display: flex; flex-wrap: wrap; gap: 7px; margin: 12px 0; }
+.set-button { padding: 8px 12px; border-radius: 8px; background: #eef1f7; }
+.set-button.active { background: var(--primary); color: white; }
+
+/* YENİ OKUMA SAYFASI */
+
+.reader-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.reader-image {
+  margin: 0 0 18px;
+  border-radius: 13px;
+  background: #f2f5fa;
+  overflow: hidden;
   text-align: center;
 }
 
-[hidden] { display: none !important; }
+.reader-image img {
+  display: block;
+  width: 100%;
+  max-height: 390px;
+  object-fit: contain;
+  background: #f2f5fa;
+}
+
+.reader-image-placeholder {
+  min-height: 100px;
+  padding: 25px;
+  color: var(--muted);
+}
+
+.reader-hint {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.reader-passage {
+  font-size: 19px;
+  line-height: 2.15;
+  overflow-wrap: anywhere;
+}
+
+.reader-sentence {
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.reader-sentence:hover { background: #f5f7fc; }
+
+.reader-word {
+  display: inline;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background .15s;
+}
+
+.reader-word:hover {
+  background: #dfe7ff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.reader-word.important {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.reader-word.important:hover { background: var(--green-bg); }
+
+.meaning-box {
+  position: sticky;
+  bottom: 12px;
+  z-index: 3;
+  margin-top: 22px;
+  padding: 16px;
+  border: 1px solid #b8c8ee;
+  border-radius: 12px;
+  background: #f6f8ff;
+  box-shadow: 0 5px 20px rgba(20,40,80,.08);
+}
+
+.meaning-label {
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+
+.meaning-title {
+  font-size: 18px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+  margin: 3px 0;
+}
+
+.meaning-text { overflow-wrap: anywhere; }
+
+.meaning-loading {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 13px 0 18px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.legend-green { color: var(--green); font-weight: 800; }
 
 @media (max-width: 800px) {
   .layout { grid-template-columns: 1fr; }
-  .topbar h1 { font-size: 21px; }
   .card { padding: 16px; }
-  textarea { min-height: 220px; }
+  .reader-passage { font-size: 17px; line-height: 2; }
+  .topbar h1 { font-size: 21px; }
 }
 </style>
 </head>
@@ -471,88 +521,128 @@ input[type="file"] {
 
 <header class="topbar">
   <h1>ENGLISH STUDY LAB</h1>
-  <p>İngilizce metin analizi, kelime öğrenme ve çoktan seçmeli test sistemi</p>
+  <p>Oku · Kelimeleri öğren · Kendini test et</p>
 </header>
 
 <main class="container">
 
-  <div class="layout">
+  <!-- ANA SAYFA -->
+  <section id="homePage">
+    <div class="layout">
 
-    <section class="card">
-      <h2>İngilizce metnin</h2>
-      <p class="description">
-        Metnini buraya yapıştır. Sistem kelimeleri çıkarıp testlerini oluşturacak.
-      </p>
+      <section class="card">
+        <h2>İngilizce metnin</h2>
+        <p class="description">
+          İngilizce metnini yaz veya yapıştır. Ardından metnin önizlemesine tıklayarak okuma sayfasını aç.
+        </p>
 
-      <textarea id="englishText"
-        placeholder="Paste your English text here...
+        <textarea id="englishText"
+          placeholder="Paste your English text here..."></textarea>
 
-Example:
-Many people live in big cities today. Air pollution is a serious problem. Governments can help protect the environment."></textarea>
-
-      <div class="button-row">
-        <button class="btn btn-light" id="wordButton">W · KELİMELER</button>
-        <button class="btn btn-primary" id="quizButton">QUIZ · TEST OLUŞTUR</button>
-        <button class="btn btn-neutral" id="clearButton">Temizle</button>
-      </div>
-
-      <div class="stats">
-        <div class="stat">
-          <strong id="uniqueCount">0</strong>
-          <span>Farklı kelime</span>
+        <div class="button-row">
+          <button class="btn btn-primary" id="readButton">METNİ OKU ↗</button>
+          <button class="btn btn-light" id="wordButton">W · KELİMELER</button>
+          <button class="btn btn-primary" id="quizButton">QUIZ · TEST OLUŞTUR</button>
+          <button class="btn btn-neutral" id="clearButton">Temizle</button>
         </div>
-        <div class="stat">
-          <strong id="totalCount">0</strong>
-          <span>Toplam kelime</span>
+
+        <div class="stats">
+          <div class="stat">
+            <strong id="uniqueCount">0</strong>
+            <span>Farklı kelime</span>
+          </div>
+          <div class="stat">
+            <strong id="totalCount">0</strong>
+            <span>Toplam kelime</span>
+          </div>
+          <div class="stat">
+            <strong id="sentenceCount">0</strong>
+            <span>Cümle</span>
+          </div>
         </div>
-        <div class="stat">
-          <strong id="sentenceCount">0</strong>
-          <span>Cümle</span>
+
+        <div class="text-preview" id="textPreview" role="button" tabindex="0">
+          <div class="preview-label">OKUMA SAYFASINI AÇ ↗</div>
+          <div class="preview-content" id="previewContent">
+            Metnini buraya yazdıktan sonra bu alana tıklayarak okumaya başlayabilirsin.
+          </div>
         </div>
+
+        <p class="note">
+          Yeşil kelimeler önemli içerik kelimelerini belirtir. Kelimeye tıkladığında anlamı açılır.
+        </p>
+      </section>
+
+      <aside class="card">
+        <h2>Metnin resmi</h2>
+        <p class="description">Bir resim yükle veya resim bağlantısı ekle.</p>
+
+        <div class="image-frame" id="imageFrame">
+          <span>Resmin burada görüntülenecek.</span>
+        </div>
+
+        <label class="field-label" for="imageUrl">Resim bağlantısı</label>
+        <input class="text-input" type="url" id="imageUrl"
+          placeholder="https://example.com/image.jpg">
+
+        <div class="button-row">
+          <button class="btn btn-light" id="loadImageButton">Resmi göster</button>
+          <button class="btn btn-neutral" id="removeImageButton">Resmi kaldır</button>
+        </div>
+
+        <label class="field-label" for="imageFile">Bilgisayardan resim seç</label>
+        <input type="file" id="imageFile" accept="image/*">
+
+        <p class="note">Eklediğin resim okuma sayfasının en üstünde gösterilir.</p>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- OKUMA SAYFASI -->
+  <section id="readerPage" class="card" hidden>
+    <div class="reader-top">
+      <div>
+        <h2>Reading Room</h2>
+        <p class="description">İngilizce metnini oku ve kelimelere tıkla.</p>
       </div>
+      <button class="btn btn-neutral" id="backButton">← Ana sayfaya dön</button>
+    </div>
 
-      <p class="note">
-        W kelime listesini açar. QUIZ, 20 soruluk kelime testi ile 10 soruluk
-        okuma testini hazırlar.
-      </p>
-    </section>
+    <div class="reader-image" id="readerImage">
+      <div class="reader-image-placeholder">Bu metin için resim eklenmedi.</div>
+    </div>
 
-    <aside class="card">
-      <h2>Metne resim ekle</h2>
-      <p class="description">
-        Metnin konusuyla ilgili bir resim seç veya doğrudan resim adresi ekle.
-      </p>
+    <div class="legend">
+      <span><span class="legend-green">Yeşil</span> = önemli kelime</span>
+      <span>Kelimeye tıkla = kelimenin anlamı</span>
+      <span>Cümlede boş alana tıkla = cümle çevirisi</span>
+    </div>
 
-      <div class="image-placeholder" id="imageFrame">
-        <span>Resmin burada görüntülenecek.</span>
+    <div class="reader-hint">
+      Bir kelimeyi seçtiğinde Türkçe karşılığı aşağıdaki anlam kutusunda görünür.
+      Cümle çevirisi için cümlenin kelimeler arasında kalan boş alanına tıkla.
+    </div>
+
+    <div id="readerPassage" class="reader-passage"></div>
+
+    <div class="meaning-box" id="meaningBox">
+      <div class="meaning-label" id="meaningLabel">Kelime ve cümle sözlüğü</div>
+      <div class="meaning-title" id="meaningTitle">Bir kelime seç</div>
+      <div class="meaning-text" id="meaningText">
+        İngilizce metindeki yeşil veya diğer kelimelere tıklayabilirsin.
       </div>
+      <div class="meaning-loading" id="meaningLoading"></div>
+    </div>
+  </section>
 
-      <label class="field-label" for="imageUrl">Resim bağlantısı</label>
-      <input class="text-input" type="url" id="imageUrl"
-        placeholder="https://example.com/image.jpg">
-
-      <div class="button-row">
-        <button class="btn btn-light" id="loadImageButton">Resmi göster</button>
-        <button class="btn btn-neutral" id="removeImageButton">Resmi kaldır</button>
-      </div>
-
-      <label class="field-label" for="imageFile">Bilgisayardan resim seç</label>
-      <input type="file" id="imageFile" accept="image/*">
-
-      <p class="note">
-        Yerel bir dosya seçersen resim bu tarayıcı oturumunda gösterilir.
-      </p>
-    </aside>
-
-  </div>
-
+  <!-- TEST MERKEZİ -->
   <section id="quizArea" class="card" hidden>
     <div class="quiz-header">
       <div>
         <h2>Test merkezi</h2>
-        <p class="description">Cevaplarını seç ve testin sonunda kontrol et.</p>
+        <p class="description">Cevaplarını seç ve sonunda puanını gör.</p>
       </div>
-
       <div class="tabs">
         <button class="tab active" id="vocabTab">Kelime testi</button>
         <button class="tab" id="readingTab">Reading · 10 soru</button>
@@ -563,9 +653,7 @@ Many people live in big cities today. Air pollution is a serious problem. Govern
       <div class="quiz-header">
         <div>
           <h3 id="setTitle">Kelime Testi 1</h3>
-          <p class="description">
-            Her test 20 sorudan oluşur. Metin kısa ise bazı kelimeler tekrar edebilir.
-          </p>
+          <p class="description">Her test 20 çoktan seçmeli sorudan oluşur.</p>
         </div>
         <button class="btn btn-light" id="nextSetButton">Sonraki 20 soru →</button>
       </div>
@@ -581,13 +669,9 @@ Many people live in big cities today. Air pollution is a serious problem. Govern
 
     <div id="readingPanel" hidden>
       <h3>Okuduğunu anlama testi</h3>
-      <p class="description">
-        Sorular, girdiğin metindeki cümlelere dayanır. Seçenekleri metni okuyarak değerlendir.
-      </p>
-
+      <p class="description">Sorular, girdiğin İngilizce metne dayanır.</p>
       <div class="context" id="readingPassage"></div>
       <div id="readingQuestions"></div>
-
       <div class="button-row">
         <button class="btn btn-primary" id="checkReadingButton">Cevapları kontrol et</button>
       </div>
@@ -597,6 +681,7 @@ Many people live in big cities today. Air pollution is a serious problem. Govern
 
 </main>
 
+<!-- W KELİME PANELİ -->
 <div class="overlay" id="overlay"></div>
 
 <aside class="drawer" id="wordDrawer" aria-label="Kelime listesi">
@@ -605,19 +690,15 @@ Many people live in big cities today. Air pollution is a serious problem. Govern
       <h2>Kelime defteri</h2>
       <p class="description" id="wordListSummary">Metindeki kelimeler</p>
     </div>
-    <button class="btn btn-neutral btn-small" id="closeDrawerButton">Kapat ✕</button>
+    <button class="btn btn-neutral" id="closeDrawerButton">Kapat ✕</button>
   </div>
 
   <div class="drawer-tools">
     <input class="text-input" type="search" id="wordSearch"
       placeholder="Kelime ara...">
-
-    <button class="btn btn-primary" id="translateButton">
-      Anlamları otomatik getir
-    </button>
-
+    <button class="btn btn-primary" id="translateButton">Anlamları otomatik getir</button>
     <p class="note">
-      Türkçe anlamlarını elle de yazabilirsin. Yazdığın anlamlar kelime testlerinde kullanılır.
+      Anlamları listede kendin de düzeltebilirsin. Çeviri internet bağlantısı gerektirir.
     </p>
     <div class="status" id="translationStatus"></div>
   </div>
@@ -628,237 +709,228 @@ Many people live in big cities today. Air pollution is a serious problem. Govern
 <script>
 "use strict";
 
-/* -----------------------------------------
-   1. TEMEL SÖZLÜK
-   Yaygın İngilizce kelimeler için başlangıç
-   anlamları. Bilinmeyenler elle eklenebilir
-   veya çeviri servisiyle çevrilebilir.
------------------------------------------- */
-
-const baseDictionary = {
-  "a":"bir", "an":"bir", "the":"belirli tanımlık",
-  "and":"ve", "or":"veya", "but":"ama; fakat",
-  "if":"eğer", "because":"çünkü", "as":"olarak; gibi",
-  "than":"-den daha", "so":"bu yüzden; çok",
-  "of":"-ın; -in", "in":"içinde; -de",
-  "on":"üzerinde; -de", "at":"-de; -da",
-  "to":"-e; -a; -mek için", "for":"için",
-  "from":"-den; -dan", "with":"ile",
-  "by":"ile; -erek; -arak", "about":"hakkında",
-  "into":"içine", "through":"aracılığıyla; içinden",
-  "during":"sırasında", "before":"önce",
-  "after":"sonra", "between":"arasında",
-  "under":"altında", "over":"üzerinde; boyunca",
-  "is":"-dır; olmak", "are":"-dır; olmak",
-  "was":"idi", "were":"idiler",
-  "be":"olmak", "been":"olmuş", "being":"olma",
-  "have":"sahip olmak", "has":"sahip olmak",
-  "had":"sahipti; vardı", "do":"yapmak",
-  "does":"yapar", "did":"yaptı",
-  "can":"-ebilmek", "could":"-ebilirdi",
-  "will":"-ecek", "would":"-erdi",
-  "should":"-meli; -malı", "must":"zorunda olmak",
-  "not":"değil", "no":"hayır; hiç",
-  "this":"bu", "that":"şu; o",
-  "these":"bunlar", "those":"şunlar; onlar",
-  "it":"o", "they":"onlar",
-  "we":"biz", "you":"sen; siz",
-  "he":"o (erkek)", "she":"o (kadın)",
-  "I":"ben", "my":"benim", "their":"onların",
-  "our":"bizim", "your":"senin; sizin",
-  "who":"kim", "what":"ne", "which":"hangi",
-  "when":"ne zaman", "where":"nerede",
-  "why":"neden", "how":"nasıl",
-  "all":"bütün; tüm", "many":"birçok",
-  "much":"çok", "some":"bazı; biraz",
-  "more":"daha fazla", "most":"çoğu; en çok",
-  "few":"az sayıda", "each":"her bir",
-  "every":"her", "other":"diğer",
-  "another":"başka bir", "same":"aynı",
-  "very":"çok", "also":"ayrıca; de; da",
-  "only":"sadece", "often":"sık sık",
-  "usually":"genellikle", "always":"her zaman",
-  "never":"asla", "sometimes":"bazen",
-  "today":"bugün; günümüzde",
-  "now":"şimdi", "then":"o zaman; sonra",
-  "here":"burada", "there":"orada",
-  "people":"insanlar", "person":"kişi",
-  "man":"adam; erkek", "woman":"kadın",
-  "child":"çocuk", "children":"çocuklar",
-  "old":"yaşlı; eski", "young":"genç",
-  "new":"yeni", "big":"büyük", "small":"küçük",
-  "large":"büyük; geniş", "little":"küçük; az",
-  "good":"iyi", "bad":"kötü", "important":"önemli",
-  "different":"farklı", "similar":"benzer",
-  "possible":"mümkün", "common":"yaygın; ortak",
-  "serious":"ciddi", "dangerous":"tehlikeli",
-  "clean":"temiz", "dirty":"kirli",
-  "healthy":"sağlıklı", "healthier":"daha sağlıklı",
-  "cleaner":"daha temiz", "easy":"kolay",
-  "difficult":"zor", "simple":"basit",
-  "high":"yüksek", "low":"düşük",
-  "fast":"hızlı", "slow":"yavaş",
-  "different":"farklı", "free":"ücretsiz; özgür",
-  "city":"şehir", "cities":"şehirler",
-  "country":"ülke", "countries":"ülkeler",
-  "world":"dünya", "life":"yaşam; hayat",
-  "way":"yol; yöntem", "place":"yer",
-  "time":"zaman", "day":"gün", "year":"yıl",
-  "problem":"sorun", "result":"sonuç",
-  "reason":"neden; sebep", "cause":"neden olmak",
-  "effect":"etki", "change":"değişmek; değişiklik",
-  "people":"insanlar", "car":"araba",
-  "factory":"fabrika", "factories":"fabrikalar",
-  "air":"hava", "water":"su",
-  "pollution":"kirlilik", "environment":"çevre",
-  "health":"sağlık", "government":"hükûmet",
-  "governments":"hükûmetler", "law":"yasa",
-  "laws":"yasalar", "transport":"ulaşım",
-  "public":"kamusal; halka açık",
-  "paper":"kâğıt", "plastic":"plastik",
-  "recycle":"geri dönüştürmek",
-  "recycling":"geri dönüşüm",
-  "protect":"korumak", "reduce":"azaltmak",
-  "increase":"artırmak", "improve":"geliştirmek",
-  "develop":"geliştirmek; gelişmek",
-  "create":"oluşturmak", "make":"yapmak",
-  "do":"yapmak", "use":"kullanmak",
-  "help":"yardım etmek", "need":"ihtiyaç duymak",
-  "want":"istemek", "know":"bilmek",
-  "think":"düşünmek", "believe":"inanmak",
-  "understand":"anlamak", "learn":"öğrenmek",
-  "study":"çalışmak; öğrenim görmek",
-  "teach":"öğretmek", "read":"okumak",
-  "write":"yazmak", "speak":"konuşmak",
-  "say":"söylemek", "tell":"anlatmak; söylemek",
-  "find":"bulmak", "show":"göstermek",
-  "give":"vermek", "take":"almak",
-  "get":"almak; elde etmek", "keep":"tutmak; korumak",
-  "become":"olmak; hâline gelmek",
-  "live":"yaşamak", "work":"çalışmak",
-  "move":"hareket etmek; taşınmak",
-  "go":"gitmek", "come":"gelmek",
-  "build":"inşa etmek", "provide":"sağlamak",
-  "allow":"izin vermek", "prevent":"önlemek",
-  "support":"desteklemek", "require":"gerektirmek",
-  "offer":"sunmak; teklif etmek",
-  "include":"içermek", "explain":"açıklamak",
-  "consider":"dikkate almak; değerlendirmek",
-  "appear":"görünmek; ortaya çıkmak",
-  "happen":"olmak; meydana gelmek",
-  "continue":"devam etmek", "remain":"kalmak",
-  "change":"değiştirmek; değişmek",
-  "start":"başlamak", "begin":"başlamak",
-  "end":"bitmek; sona ermek",
-  "stop":"durmak; durdurmak", "try":"denemek",
-  "choose":"seçmek", "follow":"takip etmek",
-  "protect":"korumak", "save":"kurtarmak; biriktirmek",
-  "rely":"güvenmek; dayanmak",
-  "depend":"bağlı olmak", "affect":"etkilemek",
-  "cause":"neden olmak", "lead":"yol açmak; liderlik etmek",
-  "therefore":"bu nedenle", "however":"ancak; bununla birlikte",
-  "although":"-mesine rağmen", "while":"iken; oysa",
-  "since":"-den beri; çünkü", "as a result":"sonuç olarak",
-  "especially":"özellikle", "together":"birlikte",
-  "daily":"günlük", "environmental":"çevresel",
-  "natural":"doğal", "social":"sosyal; toplumsal",
-  "economic":"ekonomik", "educational":"eğitimle ilgili",
-  "research":"araştırma", "education":"eğitim",
-  "science":"bilim", "technology":"teknoloji",
-  "energy":"enerji", "food":"yiyecek",
-  "animal":"hayvan", "plant":"bitki",
-  "nature":"doğa", "tree":"ağaç",
-  "forest":"orman", "river":"nehir",
-  "sea":"deniz", "land":"kara; arazi",
-  "rain":"yağmur", "sun":"güneş",
-  "air":"hava", "fire":"ateş",
-  "future":"gelecek", "past":"geçmiş",
-  "present":"şimdiki zaman; mevcut",
-  "idea":"fikir", "fact":"gerçek; olgu",
-  "information":"bilgi", "example":"örnek",
-  "question":"soru", "answer":"cevap",
-  "number":"sayı", "group":"grup",
-  "family":"aile", "community":"topluluk",
-  "school":"okul", "student":"öğrenci",
-  "teacher":"öğretmen", "job":"iş",
-  "money":"para", "market":"pazar; piyasa",
-  "business":"iş; işletme", "company":"şirket",
-  "product":"ürün", "service":"hizmet",
-  "system":"sistem", "government":"hükûmet",
-  "policy":"politika; ilke", "decision":"karar",
-  "development":"gelişim; kalkınma",
-  "growth":"büyüme", "issue":"mesele; sorun",
-  "challenge":"zorluk", "opportunity":"fırsat",
-  "benefit":"fayda; yarar", "risk":"risk",
-  "level":"seviye; düzey", "area":"alan; bölge"
-};
-
-const stopWords = new Set(
-  ("a an the and or but if because as than so of in on at to for from " +
-   "with by about into through during before after between under over " +
-   "is are was were be been being have has had do does did can could " +
-   "will would should must not no this that these those it they we you " +
-   "he she i my their our your who what which when where why how all " +
-   "many much some more most few each every other another same very " +
-   "also only often usually always never sometimes today now then here " +
-   "there").split(/\s+/)
-);
-
-/* -----------------------------------------
-   2. UYGULAMA DURUMU
------------------------------------------- */
+const $ = id => document.getElementById(id);
 
 const state = {
   sentences: [],
   tokens: [],
   words: [],
-  customMeanings: {},
+  meanings: {},
   vocabSets: [],
   readingQuestions: [],
   currentSet: 0,
-  quizMode: "vocab"
+  quizMode: "vocab",
+  imageSrc: null
 };
 
-const $ = id => document.getElementById(id);
+let localImageUrl = null;
+let translationCache = {};
+
+const stopWords = new Set((
+  "a an the and or but if because as than so of in on at to for from " +
+  "with by about into through during before after between under over " +
+  "is are was were be been being have has had do does did can could " +
+  "will would should must not no this that these those it they we you " +
+  "he she i me my their our your who what which when where why how all " +
+  "many much some more most few each every other another same very " +
+  "also only often usually always never sometimes today now then here " +
+  "there am its your yours them us their whom whose nor yet"
+).split(/\s+/));
+
+const dictionary = {
+  "environment":"çevre",
+  "environmental":"çevresel",
+  "pollution":"kirlilik",
+  "air":"hava",
+  "water":"su",
+  "city":"şehir",
+  "cities":"şehirler",
+  "people":"insanlar",
+  "person":"kişi",
+  "car":"araba",
+  "factory":"fabrika",
+  "factories":"fabrikalar",
+  "serious":"ciddi",
+  "problem":"sorun",
+  "health":"sağlık",
+  "children":"çocuklar",
+  "child":"çocuk",
+  "old":"yaşlı; eski",
+  "dangerous":"tehlikeli",
+  "clean":"temiz",
+  "dirty":"kirli",
+  "government":"hükûmet",
+  "governments":"hükûmetler",
+  "law":"yasa",
+  "laws":"yasalar",
+  "reduce":"azaltmak",
+  "protect":"korumak",
+  "public":"kamusal; toplu",
+  "transport":"ulaşım",
+  "recycle":"geri dönüştürmek",
+  "recycling":"geri dönüşüm",
+  "paper":"kâğıt",
+  "plastic":"plastik",
+  "change":"değişiklik; değiştirmek",
+  "changes":"değişiklikler",
+  "daily":"günlük",
+  "life":"yaşam; hayat",
+  "difference":"fark",
+  "everyone":"herkes",
+  "together":"birlikte",
+  "become":"olmak; hâline gelmek",
+  "healthier":"daha sağlıklı",
+  "cleaner":"daha temiz",
+  "live":"yaşamak",
+  "cause":"neden olmak",
+  "need":"ihtiyaç duymak",
+  "help":"yardım etmek",
+  "make":"yapmak; oluşturmak",
+  "use":"kullanmak",
+  "work":"çalışmak",
+  "today":"bugün; günümüzde",
+  "result":"sonuç",
+  "because":"çünkü",
+  "especially":"özellikle",
+  "many":"birçok",
+  "small":"küçük",
+  "big":"büyük",
+  "large":"büyük; geniş",
+  "important":"önemli",
+  "different":"farklı",
+  "possible":"mümkün",
+  "good":"iyi",
+  "bad":"kötü",
+  "increase":"artırmak",
+  "improve":"geliştirmek",
+  "develop":"geliştirmek; gelişmek",
+  "support":"desteklemek",
+  "prevent":"önlemek",
+  "provide":"sağlamak",
+  "include":"içermek",
+  "explain":"açıklamak",
+  "learn":"öğrenmek",
+  "study":"çalışmak; öğrenim görmek",
+  "read":"okumak",
+  "write":"yazmak",
+  "speak":"konuşmak",
+  "understand":"anlamak",
+  "find":"bulmak",
+  "show":"göstermek",
+  "know":"bilmek",
+  "think":"düşünmek",
+  "believe":"inanmak",
+  "want":"istemek",
+  "have":"sahip olmak",
+  "has":"sahip olmak",
+  "be":"olmak",
+  "is":"-dır; olmak",
+  "are":"-dır; olmak",
+  "was":"idi",
+  "were":"idiler",
+  "can":"-ebilmek",
+  "could":"-ebilirdi",
+  "will":"-ecek",
+  "would":"-erdi",
+  "should":"-meli; -malı",
+  "must":"zorunda olmak",
+  "and":"ve",
+  "or":"veya",
+  "but":"ama; fakat",
+  "if":"eğer",
+  "because":"çünkü",
+  "as":"olarak; gibi",
+  "of":"-ın; -in",
+  "in":"içinde; -de",
+  "on":"üzerinde; -de",
+  "at":"-de; -da",
+  "to":"-e; -a; -mek için",
+  "for":"için",
+  "from":"-den; -dan",
+  "with":"ile",
+  "by":"ile; -erek; -arak",
+  "about":"hakkında",
+  "after":"sonra",
+  "before":"önce",
+  "during":"sırasında",
+  "however":"ancak; bununla birlikte",
+  "although":"-mesine rağmen",
+  "therefore":"bu nedenle",
+  "as a result":"sonuç olarak",
+  "education":"eğitim",
+  "research":"araştırma",
+  "science":"bilim",
+  "technology":"teknoloji",
+  "natural":"doğal",
+  "social":"sosyal; toplumsal",
+  "economic":"ekonomik",
+  "country":"ülke",
+  "world":"dünya",
+  "future":"gelecek",
+  "past":"geçmiş",
+  "time":"zaman",
+  "year":"yıl",
+  "day":"gün",
+  "reason":"neden; sebep",
+  "effect":"etki",
+  "example":"örnek",
+  "information":"bilgi",
+  "question":"soru",
+  "answer":"cevap",
+  "group":"grup",
+  "family":"aile",
+  "school":"okul",
+  "student":"öğrenci",
+  "teacher":"öğretmen",
+  "job":"iş",
+  "money":"para",
+  "company":"şirket",
+  "business":"iş; işletme",
+  "service":"hizmet",
+  "system":"sistem",
+  "policy":"politika; ilke",
+  "decision":"karar",
+  "development":"gelişim; kalkınma",
+  "growth":"büyüme",
+  "issue":"mesele; sorun",
+  "challenge":"zorluk",
+  "opportunity":"fırsat",
+  "benefit":"fayda; yarar",
+  "risk":"risk",
+  "level":"seviye; düzey",
+  "area":"alan; bölge"
+};
 
 function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  })[char]);
+  return String(value).replace(/[&<>"']/g, ch => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[ch]);
 }
 
 function shuffle(items) {
-  const result = [...items];
-
-  for (let i = result.length - 1; i > 0; i--) {
+  const array = [...items];
+  for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [result[i], result[j]] = [result[j], result[i]];
+    [array[i], array[j]] = [array[j], array[i]];
   }
-
-  return result;
+  return array;
 }
 
 function unique(items) {
   return [...new Set(items)];
 }
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-/* -----------------------------------------
-   3. METNİ ANALİZ ET
------------------------------------------- */
+/* METNİ ANALİZ ET */
 
 function analyzeText() {
   const raw = $("englishText").value.trim();
 
   if (!raw) {
-    alert("Önce İngilizce metnini gir, dostum.");
+    alert("Önce İngilizce metnini yaz veya yapıştır.");
     return false;
   }
 
@@ -869,37 +941,24 @@ function analyzeText() {
   if (!state.sentences.length) state.sentences = [raw];
 
   state.tokens = [];
+  const wordMap = new Map();
 
   for (const sentence of state.sentences) {
     const regex = /[A-Za-z]+(?:['’][A-Za-z]+)*/g;
     let match;
 
     while ((match = regex.exec(sentence)) !== null) {
-      const original = match[0];
-      const norm = original.toLowerCase().replace(/’/g, "'");
+      const word = match[0].toLowerCase().replace(/’/g, "'");
+      state.tokens.push({word, sentence});
 
-      state.tokens.push({
-        word: original,
-        norm,
-        sentence
-      });
+      if (!wordMap.has(word)) wordMap.set(word, 0);
+      wordMap.set(word, wordMap.get(word) + 1);
     }
   }
 
-  const wordMap = new Map();
-
-  for (const token of state.tokens) {
-    if (!wordMap.has(token.norm)) {
-      wordMap.set(token.norm, {
-        word: token.norm,
-        count: 0
-      });
-    }
-    wordMap.get(token.norm).count++;
-  }
-
-  state.words = [...wordMap.values()]
-    .sort((a, b) => a.word.localeCompare(b.word));
+  state.words = [...wordMap.entries()]
+    .map(([word,count]) => ({word,count}))
+    .sort((a,b) => a.word.localeCompare(b.word));
 
   $("uniqueCount").textContent = state.words.length;
   $("totalCount").textContent = state.tokens.length;
@@ -908,35 +967,30 @@ function analyzeText() {
   return state.tokens.length > 0;
 }
 
-function getMeaning(norm) {
-  if (state.customMeanings[norm]?.trim()) {
-    return state.customMeanings[norm].trim();
-  }
+function getMeaning(word) {
+  word = word.toLowerCase().replace(/’/g, "'");
 
-  if (baseDictionary[norm]) return baseDictionary[norm];
+  if (state.meanings[word]?.trim()) return state.meanings[word].trim();
+  if (dictionary[word]) return dictionary[word];
 
-  // Basit çekim kontrolü: çoğul ve bazı fiil biçimleri.
   const candidates = [
-    norm.replace(/ies$/, "y"),
-    norm.replace(/ves$/, "f"),
-    norm.replace(/s$/, ""),
-    norm.replace(/es$/, ""),
-    norm.replace(/ing$/, ""),
-    norm.replace(/ing$/, "e"),
-    norm.replace(/ed$/, ""),
-    norm.replace(/ed$/, "e")
+    word.replace(/ies$/, "y"),
+    word.replace(/ing$/, ""),
+    word.replace(/ing$/, "e"),
+    word.replace(/ed$/, ""),
+    word.replace(/ed$/, "e"),
+    word.replace(/es$/, ""),
+    word.replace(/s$/, "")
   ];
 
   for (const candidate of candidates) {
-    if (baseDictionary[candidate]) return baseDictionary[candidate];
+    if (dictionary[candidate]) return dictionary[candidate];
   }
 
   return "";
 }
 
-/* -----------------------------------------
-   4. W: KELİME ÇEKMECESİ
------------------------------------------- */
+/* W KELİME LİSTESİ */
 
 function openDrawer() {
   if (!analyzeText()) return;
@@ -957,52 +1011,62 @@ function renderWordList() {
   $("wordListSummary").textContent =
     state.words.length + " farklı kelime bulundu.";
 
-  const filter = $("wordSearch").value.trim().toLowerCase();
-
-  const shown = state.words.filter(item =>
-    item.word.includes(filter)
-  );
+  const search = $("wordSearch").value.trim().toLowerCase();
+  const shown = state.words.filter(item => item.word.includes(search));
 
   if (!shown.length) {
     $("wordList").innerHTML =
-      '<div class="empty-state">Bu aramayla eşleşen kelime yok.</div>';
+      '<div class="note">Kelime bulunamadı.</div>';
     return;
   }
 
-  $("wordList").innerHTML = shown.map(item => {
-    const meaning = getMeaning(item.word);
+  $("wordList").innerHTML = shown.map(item => `
+    <div class="word-row">
+      <div class="word-name">${escapeHTML(item.word)}</div>
+      <div class="word-count">×${item.count}</div>
+      <input
+        class="word-meaning"
+        data-meaning="${escapeHTML(item.word)}"
+        value="${escapeHTML(getMeaning(item.word))}"
+        placeholder="Türkçe anlam">
+    </div>
+  `).join("");
 
-    return `
-      <div class="word-row">
-        <div class="word-name">${escapeHTML(item.word)}</div>
-        <div class="word-count">×${item.count}</div>
-        <input
-          class="word-meaning"
-          type="text"
-          data-meaning-for="${escapeHTML(item.word)}"
-          value="${escapeHTML(meaning)}"
-          placeholder="Türkçe anlamı">
-      </div>
-    `;
-  }).join("");
-
-  document.querySelectorAll("[data-meaning-for]").forEach(input => {
+  document.querySelectorAll("[data-meaning]").forEach(input => {
     input.addEventListener("input", event => {
-      const norm = event.target.dataset.meaningFor;
-      state.customMeanings[norm] = event.target.value;
+      state.meanings[event.target.dataset.meaning] = event.target.value;
     });
   });
 }
 
-/* -----------------------------------------
-   5. İSTEĞE BAĞLI OTOMATİK ÇEVİRİ
-   Kelimeler harici çeviri hizmetine gönderilir.
------------------------------------------- */
+/* OTOMATİK ÇEVİRİ */
 
-function decodeEntities(value) {
-  const textarea = document.createElement("textarea");
-  textarea.innerHTML = value;
-  return textarea.value;
+function decodeHTML(text) {
+  const node = document.createElement("textarea");
+  node.innerHTML = text;
+  return node.value;
+}
+
+async function translateText(text) {
+  if (translationCache[text]) return translationCache[text];
+
+  const url =
+    "https://api.mymemory.translated.net/get?q=" +
+    encodeURIComponent(text) +
+    "&langpair=en%7Ctr";
+
+  const response = await fetch(url);
+  if (!response.ok) throw new Error("Çeviri hizmetine ulaşılamadı.");
+
+  const data = await response.json();
+  const translation = decodeHTML(
+    data?.responseData?.translatedText || ""
+  ).trim();
+
+  if (!translation) throw new Error("Çeviri bulunamadı.");
+
+  translationCache[text] = translation;
+  return translation;
 }
 
 async function autoTranslate() {
@@ -1011,195 +1075,247 @@ async function autoTranslate() {
   const missing = state.words.filter(item => !getMeaning(item.word));
 
   if (!missing.length) {
-    $("translationStatus").textContent =
-      "Bütün kelimelerin bir anlamı bulunuyor.";
+    $("translationStatus").textContent = "Tüm kelimelerin anlamı bulunuyor.";
     return;
   }
 
-  // Tek çalıştırmada en fazla 60 kelimeyi çevir.
   const batch = missing.slice(0, 60);
-  let completed = 0;
+  let done = 0;
   let failed = 0;
 
   $("translateButton").disabled = true;
-  $("translationStatus").textContent =
-    "Çeviri yapılıyor: 0 / " + batch.length;
+  $("translationStatus").textContent = "Çeviri başlıyor...";
 
-  for (let i = 0; i < batch.length; i += 4) {
-    const chunk = batch.slice(i, i + 4);
+  for (const item of batch) {
+    try {
+      const meaning = await translateText(item.word);
+      state.meanings[item.word] = meaning;
+    } catch (error) {
+      failed++;
+    }
 
-    await Promise.all(chunk.map(async item => {
-      try {
-        const url =
-          "https://api.mymemory.translated.net/get?q=" +
-          encodeURIComponent(item.word) +
-          "&langpair=en%7Ctr";
-
-        const response = await fetch(url);
-
-        if (!response.ok) throw new Error("Çeviri servisi yanıt vermedi.");
-
-        const data = await response.json();
-        let translated = data?.responseData?.translatedText || "";
-        translated = decodeEntities(translated).trim();
-
-        if (
-          translated &&
-          translated.toLowerCase() !== item.word.toLowerCase()
-        ) {
-          state.customMeanings[item.word] = translated;
-        } else {
-          failed++;
-        }
-      } catch (error) {
-        failed++;
-      }
-
-      completed++;
-
-      $("translationStatus").textContent =
-        "Çeviri yapılıyor: " + completed + " / " + batch.length;
-    }));
-
-    await sleep(120);
+    done++;
+    $("translationStatus").textContent = `Çevrilen: ${done}/${batch.length}`;
   }
 
   renderWordList();
-
-  $("translationStatus").textContent =
-    "İşlem tamamlandı. " + completed + " kelime işlendi." +
-    (failed ? " " + failed + " kelimede çeviri alınamadı." : "") +
-    (missing.length > batch.length
-      ? " Kalan kelimeler için düğmeye tekrar basabilirsin."
-      : "");
-
   $("translateButton").disabled = false;
+  $("translationStatus").textContent =
+    `İşlem tamamlandı. ${done - failed} başarılı, ${failed} başarısız.` +
+    (missing.length > batch.length ? " Kalanlar için tekrar bas." : "");
 }
 
-/* -----------------------------------------
-   6. KELİME TESTİ SORULARI
------------------------------------------- */
+/* OKUMA SAYFASINI AÇ */
 
-function meaningOptions(correct) {
-  const knownMeanings = state.words
-    .map(item => getMeaning(item.word))
-    .filter(Boolean);
+function openReader() {
+  if (!analyzeText()) return;
 
-  const extraMeanings = [
-    "geliştirmek", "azaltmak", "korumak", "etkilemek",
-    "önemli", "sonuç", "araştırma", "artırmak",
-    "oluşturmak", "farklı", "sağlamak", "önlemek",
-    "tehlikeli", "güvenli", "gerekli", "başarılı",
-    "desteklemek", "açıklamak", "karar", "fırsat"
-  ];
+  $("homePage").hidden = true;
+  $("quizArea").hidden = true;
+  $("readerPage").hidden = false;
 
-  const distractors = shuffle(unique([
-    ...knownMeanings,
-    ...extraMeanings
-  ]).filter(value => value && value !== correct));
+  renderReaderImage();
+  renderReaderText();
 
-  return shuffle([
-    correct,
-    ...distractors.slice(0, 3)
-  ]);
+  $("readerPage").scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-function clozeOptions(target) {
-  let pool = state.words
-    .map(item => item.word)
-    .filter(word => word !== target && !stopWords.has(word));
+function backHome() {
+  $("readerPage").hidden = true;
+  $("homePage").hidden = false;
+  $("homePage").scrollIntoView({behavior:"smooth",block:"start"});
+}
 
-  if (pool.length < 3) {
-    pool = state.words
-      .map(item => item.word)
-      .filter(word => word !== target);
+function renderReaderImage() {
+  if (!state.imageSrc) {
+    $("readerImage").innerHTML =
+      '<div class="reader-image-placeholder">Bu metin için henüz resim eklenmedi.</div>';
+    return;
   }
 
-  const fallback = [
-    "environment", "problem", "people", "change",
-    "support", "develop", "result", "important",
-    "science", "community"
-  ];
-
-  pool = unique([...pool, ...fallback])
-    .filter(word => word !== target);
-
-  return shuffle([target, ...shuffle(pool).slice(0, 3)]);
+  $("readerImage").innerHTML =
+    `<img src="${escapeHTML(state.imageSrc)}" alt="Metnin resmi">`;
 }
 
-function makeVocabQuestion(token, position) {
-  const meaning = getMeaning(token.norm);
+function isImportantWord(word) {
+  const norm = word.toLowerCase().replace(/’/g, "'");
+  return norm.length >= 4 && !stopWords.has(norm);
+}
 
-  // Anlamı bilinen kelimeler için Türkçe karşılık testi.
-  const availableMeanings = unique(
+function renderSentence(sentence, sentenceIndex) {
+  const regex = /[A-Za-z]+(?:['’][A-Za-z]+)*/g;
+  let html = "";
+  let lastIndex = 0;
+  let match;
+
+  while ((match = regex.exec(sentence)) !== null) {
+    html += escapeHTML(sentence.slice(lastIndex, match.index));
+
+    const original = match[0];
+    const word = original.toLowerCase().replace(/’/g, "'");
+    const important = isImportantWord(word);
+
+    html += `
+      <span
+        class="reader-word ${important ? "important" : ""}"
+        data-reader-word="${escapeHTML(word)}"
+        title="Kelime anlamını görmek için tıkla">${escapeHTML(original)}</span>`;
+
+    lastIndex = match.index + original.length;
+  }
+
+  html += escapeHTML(sentence.slice(lastIndex));
+
+  return `
+    <span class="reader-sentence" data-sentence-index="${sentenceIndex}"
+      title="Cümle çevirisi için kelimelerin dışındaki boş alana tıkla">${html}</span>`;
+}
+
+function renderReaderText() {
+  $("readerPassage").innerHTML = state.sentences
+    .map((sentence,index) => renderSentence(sentence,index) + " ")
+    .join("");
+
+  $("readerPassage").querySelectorAll("[data-reader-word]").forEach(el => {
+    el.addEventListener("click", async event => {
+      event.stopPropagation();
+      await showWordMeaning(el.dataset.readerWord);
+    });
+  });
+
+  $("readerPassage").querySelectorAll("[data-sentence-index]").forEach(el => {
+    el.addEventListener("click", async event => {
+      if (event.target.closest("[data-reader-word]")) return;
+
+      const sentence = state.sentences[Number(el.dataset.sentenceIndex)];
+      await showSentenceMeaning(sentence);
+    });
+  });
+}
+
+async function showWordMeaning(word) {
+  $("meaningLabel").textContent = "Kelime anlamı";
+  $("meaningTitle").textContent = word;
+  $("meaningText").textContent = getMeaning(word) || "Anlam aranıyor...";
+  $("meaningLoading").textContent = "";
+
+  if (getMeaning(word)) return;
+
+  $("meaningLoading").textContent = "Türkçe karşılık aranıyor...";
+
+  try {
+    const meaning = await translateText(word);
+    state.meanings[word] = meaning;
+    $("meaningText").textContent = meaning;
+    $("meaningLoading").textContent = "";
+  } catch (error) {
+    $("meaningText").textContent =
+      "Anlam bulunamadı. W kelime listesini açıp Türkçe karşılığı elle ekleyebilirsin.";
+    $("meaningLoading").textContent =
+      "İnternet bağlantını da kontrol edebilirsin.";
+  }
+}
+
+async function showSentenceMeaning(sentence) {
+  $("meaningLabel").textContent = "Cümle çevirisi";
+  $("meaningTitle").textContent = sentence;
+  $("meaningText").textContent = "Cümle Türkçeye çevriliyor...";
+  $("meaningLoading").textContent = "";
+
+  try {
+    const meaning = await translateText(sentence);
+    $("meaningText").textContent = meaning;
+  } catch (error) {
+    $("meaningText").textContent =
+      "Cümle çevirisi alınamadı. İnternet bağlantısını kontrol et ve yeniden dene.";
+  }
+}
+
+/* KELİME TESTLERİ */
+
+function meaningOptions(correct) {
+  const meanings = unique(
     state.words.map(item => getMeaning(item.word)).filter(Boolean)
   );
 
-  if (meaning && availableMeanings.length >= 4) {
+  const extras = [
+    "geliştirmek", "azaltmak", "korumak", "etkilemek",
+    "önemli", "sonuç", "araştırma", "artırmak",
+    "oluşturmak", "desteklemek", "önlemek", "tehlikeli"
+  ];
+
+  const distractors = shuffle(
+    unique([...meanings,...extras]).filter(item => item !== correct)
+  );
+
+  return shuffle([correct,...distractors.slice(0,3)]);
+}
+
+function makeClozeOptions(word) {
+  let pool = state.words
+    .map(item => item.word)
+    .filter(item => item !== word && !stopWords.has(item));
+
+  pool = unique([...pool,"environment","problem","people","change","support"])
+    .filter(item => item !== word);
+
+  return shuffle([word,...shuffle(pool).slice(0,3)]);
+}
+
+function makeVocabQuestion(token) {
+  const meaning = getMeaning(token.word);
+  const known = unique(
+    state.words.map(item => getMeaning(item.word)).filter(Boolean)
+  );
+
+  if (meaning && known.length >= 4) {
     return {
-      type: "meaning",
-      prompt: '"' + token.word + '" kelimesinin Türkçe karşılığı hangisidir?',
+      prompt: `"${token.word}" kelimesinin Türkçe karşılığı hangisidir?`,
       context: "",
       options: meaningOptions(meaning),
       correct: meaning,
-      explanation: token.word + " = " + meaning
+      explanation: `${token.word} = ${meaning}`
     };
   }
 
-  // Anlamı bulunmayan kelimeler için cümle tamamlama.
   const regex = new RegExp(
-    "\\b" + token.norm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b",
+    "\\b" + token.word.replace(/[.*+?^${}()|[\]\\]/g,"\\$&") + "\\b",
     "i"
   );
 
-  const blankSentence = token.sentence.replace(regex, "________");
-
   return {
-    type: "cloze",
     prompt: "Boşluğa hangi kelime gelmelidir?",
-    context: blankSentence,
-    options: clozeOptions(token.norm),
-    correct: token.norm,
-    explanation: "Doğru kelime: " + token.norm
+    context: token.sentence.replace(regex,"________"),
+    options: makeClozeOptions(token.word),
+    correct: token.word,
+    explanation: "Doğru kelime: " + token.word
   };
 }
 
 function makeVocabSet(setIndex) {
-  const meaningful = state.tokens.filter(token =>
-    !stopWords.has(token.norm) && token.norm.length > 1
+  const bank = state.tokens.filter(token =>
+    !stopWords.has(token.word) && token.word.length > 1
   );
 
-  const bank = meaningful.length >= 20 ? meaningful : state.tokens;
+  const usable = bank.length ? bank : state.tokens;
+  if (!usable.length) return [];
 
-  if (!bank.length) return [];
-
-  const questions = [];
-
-  for (let i = 0; i < 20; i++) {
-    const token = bank[(setIndex * 20 + i) % bank.length];
-    questions.push(makeVocabQuestion(token, i));
-  }
-
-  return questions;
+  return Array.from({length:20},(_,i) =>
+    makeVocabQuestion(usable[(setIndex * 20 + i) % usable.length])
+  );
 }
 
 function createNextSet() {
-  const newIndex = state.vocabSets.length;
-
-  state.vocabSets.push(makeVocabSet(newIndex));
-  state.currentSet = newIndex;
-
+  state.vocabSets.push(makeVocabSet(state.vocabSets.length));
+  state.currentSet = state.vocabSets.length - 1;
   renderSetNavigation();
   renderCurrentSet();
 }
 
 function renderSetNavigation() {
-  $("setNavigation").innerHTML = state.vocabSets.map((set, index) => `
-    <button
-      class="set-button ${index === state.currentSet ? "active" : ""}"
-      data-set="${index}">
-      Test ${index + 1}
-    </button>
+  $("setNavigation").innerHTML = state.vocabSets.map((set,index) => `
+    <button class="set-button ${index === state.currentSet ? "active" : ""}"
+      data-set="${index}">Test ${index+1}</button>
   `).join("");
 
   document.querySelectorAll("[data-set]").forEach(button => {
@@ -1211,132 +1327,74 @@ function renderSetNavigation() {
   });
 }
 
-function renderCurrentSet() {
-  const questions = state.vocabSets[state.currentSet] || [];
-
-  $("setTitle").textContent =
-    "Kelime Testi " + (state.currentSet + 1);
-
-  $("vocabResult").innerHTML = "";
-
-  renderQuestions(
-    $("vocabQuestions"),
-    questions,
-    "vocab-" + state.currentSet
-  );
-}
-
-/* -----------------------------------------
-   7. OKUDUĞUNU ANLAMA SORULARI
-   Her soruda doğru seçenek metindeki bir
-   cümleyle birebir örtüşür. Diğer seçenekler
-   cümledeki bazı kelimeler değiştirilerek
-   oluşturulur.
------------------------------------------- */
+/* OKUDUĞUNU ANLAMA TESTİ */
 
 function makeWrongSentence(source, variation) {
-  const wordMatches = [
-    ...source.matchAll(/[A-Za-z]+(?:['’][A-Za-z]+)*/g)
-  ];
-
-  const candidates = wordMatches.filter(match =>
+  const matches = [...source.matchAll(/[A-Za-z]+/g)];
+  const candidates = matches.filter(match =>
     match[0].length >= 4 && !stopWords.has(match[0].toLowerCase())
   );
 
-  const sourceWords = new Set(
-    wordMatches.map(match => match[0].toLowerCase())
+  const sourceWords = new Set(matches.map(m => m[0].toLowerCase()));
+
+  const pool = unique([
+    ...state.words.map(item => item.word),
+    "animals","business","history","energy",
+    "technology","education","industry","science","economy"
+  ]).filter(word =>
+    word.length >= 4 &&
+    !stopWords.has(word) &&
+    !sourceWords.has(word)
   );
 
-  let replacementPool = state.words
-    .map(item => item.word)
-    .filter(word =>
-      word.length >= 4 &&
-      !stopWords.has(word) &&
-      !sourceWords.has(word)
-    );
-
-  replacementPool = unique(replacementPool);
-
-  const fallback = [
-    "animals", "business", "history", "energy",
-    "technology", "education", "industry", "medicine",
-    "society", "economy", "science", "agriculture"
-  ].filter(word => !sourceWords.has(word));
-
-  replacementPool = unique([...replacementPool, ...fallback]);
-
-  if (candidates.length && replacementPool.length) {
+  if (candidates.length && pool.length) {
     const chosen = candidates[variation % candidates.length];
-    const replacement =
-      replacementPool[variation % replacementPool.length];
+    const replacement = pool[variation % pool.length];
 
-    const original = chosen[0];
-    const replacementCase = original === original.toUpperCase()
-      ? replacement.toUpperCase()
-      : original[0] === original[0].toUpperCase()
-        ? replacement[0].toUpperCase() + replacement.slice(1)
-        : replacement;
-
-    return source.slice(0, chosen.index) +
-      replacementCase +
-      source.slice(chosen.index + original.length);
+    return source.slice(0,chosen.index) +
+      replacement +
+      source.slice(chosen.index + chosen[0].length);
   }
 
-  // Çok kısa veya az kelimeli metinler için alternatif.
-  return source + " In every case.";
+  return source + " It is not important.";
 }
 
 function createReadingQuestions() {
-  const sentences = state.sentences.filter(sentence =>
-    /[A-Za-z]{2,}/.test(sentence)
-  );
+  const sentences = state.sentences.filter(s => /[A-Za-z]{2}/.test(s));
+  if (!sentences.length) return [];
 
-  const questions = [];
+  return Array.from({length:10},(_,i) => {
+    const correct = sentences[i % sentences.length];
+    const wrong = [];
 
-  for (let i = 0; i < 10; i++) {
-    const source = sentences[i % sentences.length];
-
-    let wrong = [];
-    let variation = 0;
-
-    while (wrong.length < 3 && variation < 30) {
-      const candidate = makeWrongSentence(source, i + variation + 1);
-
-      if (
-        candidate !== source &&
-        !wrong.includes(candidate)
-      ) {
+    for (let j=1; j<20 && wrong.length<3; j++) {
+      const candidate = makeWrongSentence(correct,i+j);
+      if (candidate !== correct && !wrong.includes(candidate)) {
         wrong.push(candidate);
       }
-
-      variation++;
     }
 
     while (wrong.length < 3) {
       wrong.push("The text does not state this information.");
     }
 
-    questions.push({
-      prompt: "Metinde açıkça belirtilen cümle hangisidir?",
+    return {
+      prompt: "Metinde açıkça bulunan cümleyi seç.",
       context: "",
-      options: shuffle([source, ...wrong]),
-      correct: source,
-      explanation: "Doğru cevap metindeki cümleyle birebir örtüşür."
-    });
-  }
-
-  return questions;
+      options: shuffle([correct,...wrong]),
+      correct,
+      explanation: "Doğru seçenek metindeki cümleyle aynıdır."
+    };
+  });
 }
 
-/* -----------------------------------------
-   8. ORTAK SORU GÖRÜNÜMÜ
------------------------------------------- */
+/* TEST EKRANINI OLUŞTUR */
 
-function renderQuestions(container, questions, key) {
-  container.innerHTML = questions.map((question, index) => `
+function renderQuestions(container,questions,key) {
+  container.innerHTML = questions.map((question,index) => `
     <article class="question" data-question-card="${key}-${index}">
       <div class="question-heading">
-        <div class="question-number">${index + 1}</div>
+        <div class="question-number">${index+1}</div>
         <div class="question-prompt">${escapeHTML(question.prompt)}</div>
       </div>
 
@@ -1345,29 +1403,35 @@ function renderQuestions(container, questions, key) {
         : ""}
 
       <div class="options">
-        ${question.options.map((option, optionIndex) => `
+        ${question.options.map((option,optionIndex) => `
           <label class="option">
-            <input
-              type="radio"
-              name="${key}-${index}"
+            <input type="radio" name="${key}-${index}"
               value="${escapeHTML(option)}">
-            <span>
-              <strong>${String.fromCharCode(65 + optionIndex)}.</strong>
-              ${escapeHTML(option)}
-            </span>
+            <span><strong>${String.fromCharCode(65+optionIndex)}.</strong>
+              ${escapeHTML(option)}</span>
           </label>
         `).join("")}
       </div>
-
       <div class="feedback" hidden></div>
     </article>
   `).join("");
 }
 
-function checkAnswers(questions, key, resultId) {
+function renderCurrentSet() {
+  $("setTitle").textContent = "Kelime Testi " + (state.currentSet+1);
+  $("vocabResult").innerHTML = "";
+
+  renderQuestions(
+    $("vocabQuestions"),
+    state.vocabSets[state.currentSet],
+    "vocab-" + state.currentSet
+  );
+}
+
+function checkAnswers(questions,key,resultId) {
   let score = 0;
 
-  questions.forEach((question, index) => {
+  questions.forEach((question,index) => {
     const card = document.querySelector(
       `[data-question-card="${key}-${index}"]`
     );
@@ -1379,7 +1443,8 @@ function checkAnswers(questions, key, resultId) {
     );
 
     const feedback = card.querySelector(".feedback");
-    card.classList.remove("correct", "incorrect");
+
+    card.classList.remove("correct","incorrect");
     feedback.hidden = false;
 
     if (selected && selected.value === question.correct) {
@@ -1399,23 +1464,111 @@ function checkAnswers(questions, key, resultId) {
     <div class="result-box">
       <strong>${score} / ${questions.length}</strong>
       <div>Doğru cevap sayın.</div>
-      <div class="note">Başarı oranı: ${Math.round(
-        score / questions.length * 100
-      )}%</div>
+      <div class="note">Başarı oranı: ${
+        Math.round(score / questions.length * 100)
+      }%</div>
     </div>
   `;
-
-  $(resultId).scrollIntoView({
-    behavior: "smooth",
-    block: "nearest"
-  });
 }
 
-/* -----------------------------------------
-   9. QUIZ EKRANI VE SEKMELER
------------------------------------------- */
+/* RESİM İŞLEMLERİ */
 
-function startQuiz() {
+function showImage(src) {
+  const image = new Image();
+  image.alt = "İngilizce metnin konusu";
+  image.onload = () => {
+    state.imageSrc = src;
+    $("imageFrame").replaceChildren(image);
+  };
+  image.onerror = () => {
+    $("imageFrame").textContent =
+      "Resim yüklenemedi. Bağlantıyı veya dosyayı kontrol et.";
+  };
+  image.src = src;
+}
+
+function removeImage() {
+  if (localImageUrl) {
+    URL.revokeObjectURL(localImageUrl);
+    localImageUrl = null;
+  }
+
+  state.imageSrc = null;
+  $("imageUrl").value = "";
+  $("imageFile").value = "";
+  $("imageFrame").innerHTML = "<span>Resmin burada görüntülenecek.</span>";
+
+  if (!$("readerPage").hidden) renderReaderImage();
+}
+
+/* ANA SAYFA ETKİNLİKLERİ */
+
+function updatePreview() {
+  const value = $("englishText").value.trim();
+
+  $("previewContent").textContent = value
+    ? value.slice(0,260) + (value.length > 260 ? " …" : "")
+    : "Metnini buraya yazdıktan sonra bu alana tıklayarak okumaya başlayabilirsin.";
+}
+
+$("englishText").addEventListener("input",updatePreview);
+
+$("readButton").addEventListener("click",openReader);
+
+$("textPreview").addEventListener("click",openReader);
+$("textPreview").addEventListener("keydown",event => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    openReader();
+  }
+});
+
+$("backButton").addEventListener("click",backHome);
+
+$("wordButton").addEventListener("click",openDrawer);
+
+$("closeDrawerButton").addEventListener("click",closeDrawer);
+$("overlay").addEventListener("click",closeDrawer);
+
+$("wordSearch").addEventListener("input",renderWordList);
+$("translateButton").addEventListener("click",autoTranslate);
+
+$("loadImageButton").addEventListener("click",() => {
+  const url = $("imageUrl").value.trim();
+
+  if (!/^https?:\/\//i.test(url)) {
+    alert("Lütfen http:// veya https:// ile başlayan bir resim bağlantısı gir.");
+    return;
+  }
+
+  showImage(url);
+});
+
+$("imageFile").addEventListener("change",event => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    alert("Lütfen bir resim dosyası seç.");
+    return;
+  }
+
+  if (localImageUrl) URL.revokeObjectURL(localImageUrl);
+
+  localImageUrl = URL.createObjectURL(file);
+  $("imageUrl").value = "";
+  showImage(localImageUrl);
+});
+
+function showQuizMode(mode) {
+  state.quizMode = mode;
+  $("vocabPanel").hidden = mode !== "vocab";
+  $("readingPanel").hidden = mode !== "reading";
+  $("vocabTab").classList.toggle("active",mode === "vocab");
+  $("readingTab").classList.toggle("active",mode === "reading");
+}
+
+$("quizButton").addEventListener("click",() => {
   if (!analyzeText()) return;
 
   state.vocabSets = [];
@@ -1432,156 +1585,52 @@ function startQuiz() {
     "reading"
   );
 
-  $("vocabResult").innerHTML = "";
   $("readingResult").innerHTML = "";
+  $("quizResult")?.replaceChildren();
 
+  $("homePage").hidden = true;
+  $("readerPage").hidden = true;
   $("quizArea").hidden = false;
+
   showQuizMode("vocab");
-
-  $("quizArea").scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-}
-
-function showQuizMode(mode) {
-  state.quizMode = mode;
-
-  $("vocabPanel").hidden = mode !== "vocab";
-  $("readingPanel").hidden = mode !== "reading";
-
-  $("vocabTab").classList.toggle("active", mode === "vocab");
-  $("readingTab").classList.toggle("active", mode === "reading");
-}
-
-/* -----------------------------------------
-   10. RESİM EKLEME
------------------------------------------- */
-
-let localImageUrl = null;
-
-function showImage(src) {
-  const frame = $("imageFrame");
-  const image = document.createElement("img");
-
-  image.alt = "İngilizce metnin konusuyla ilgili resim";
-  image.src = src;
-
-  image.onload = () => {
-    frame.replaceChildren(image);
-  };
-
-  image.onerror = () => {
-    frame.textContent =
-      "Resim yüklenemedi. Bağlantıyı kontrol et veya başka bir resim seç.";
-  };
-}
-
-function removeImage() {
-  $("imageFrame").innerHTML = "<span>Resmin burada görüntülenecek.</span>";
-  $("imageUrl").value = "";
-  $("imageFile").value = "";
-
-  if (localImageUrl) {
-    URL.revokeObjectURL(localImageUrl);
-    localImageUrl = null;
-  }
-}
-
-/* -----------------------------------------
-   11. OLAYLAR
------------------------------------------- */
-
-$("wordButton").addEventListener("click", openDrawer);
-
-$("closeDrawerButton").addEventListener("click", closeDrawer);
-$("overlay").addEventListener("click", closeDrawer);
-
-$("wordSearch").addEventListener("input", renderWordList);
-$("translateButton").addEventListener("click", autoTranslate);
-
-$("quizButton").addEventListener("click", startQuiz);
-
-$("nextSetButton").addEventListener("click", () => {
-  createNextSet();
-  $("vocabQuestions").scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
+  $("quizArea").scrollIntoView({behavior:"smooth",block:"start"});
 });
 
-$("vocabTab").addEventListener("click", () => showQuizMode("vocab"));
-$("readingTab").addEventListener("click", () => showQuizMode("reading"));
+$("nextSetButton").addEventListener("click",() => {
+  createNextSet();
+  $("vocabQuestions").scrollIntoView({behavior:"smooth",block:"start"});
+});
 
-$("checkVocabButton").addEventListener("click", () => {
-  const questions = state.vocabSets[state.currentSet] || [];
+$("vocabTab").addEventListener("click",() => showQuizMode("vocab"));
+$("readingTab").addEventListener("click",() => showQuizMode("reading"));
+
+$("checkVocabButton").addEventListener("click",() => {
   checkAnswers(
-    questions,
+    state.vocabSets[state.currentSet],
     "vocab-" + state.currentSet,
     "vocabResult"
   );
 });
 
-$("checkReadingButton").addEventListener("click", () => {
-  checkAnswers(
-    state.readingQuestions,
-    "reading",
-    "readingResult"
-  );
+$("checkReadingButton").addEventListener("click",() => {
+  checkAnswers(state.readingQuestions,"reading","readingResult");
 });
 
-$("loadImageButton").addEventListener("click", () => {
-  const url = $("imageUrl").value.trim();
-
-  if (!url) {
-    alert("Önce bir resim bağlantısı gir.");
-    return;
-  }
-
-  if (!/^https?:\/\//i.test(url)) {
-    alert("Lütfen http:// veya https:// ile başlayan bir resim bağlantısı gir.");
-    return;
-  }
-
-  showImage(url);
-});
-
-$("removeImageButton").addEventListener("click", removeImage);
-
-$("imageFile").addEventListener("change", event => {
-  const file = event.target.files[0];
-
-  if (!file) return;
-
-  if (!file.type.startsWith("image/")) {
-    alert("Lütfen bir resim dosyası seç.");
-    event.target.value = "";
-    return;
-  }
-
-  if (localImageUrl) URL.revokeObjectURL(localImageUrl);
-
-  localImageUrl = URL.createObjectURL(file);
-  $("imageUrl").value = "";
-  showImage(localImageUrl);
-});
-
-$("clearButton").addEventListener("click", () => {
-  const confirmed = confirm(
-    "Metni, testleri ve eklenen resmi temizlemek istiyor musun?"
-  );
-
-  if (!confirmed) return;
+$("clearButton").addEventListener("click",() => {
+  if (!confirm("Metni, testleri ve resmi temizlemek istiyor musun?")) return;
 
   $("englishText").value = "";
   $("quizArea").hidden = true;
+  $("readerPage").hidden = true;
+  $("homePage").hidden = false;
 
   state.sentences = [];
   state.tokens = [];
   state.words = [];
+  state.meanings = {};
   state.vocabSets = [];
   state.readingQuestions = [];
-  state.customMeanings = {};
+  translationCache = {};
 
   $("uniqueCount").textContent = "0";
   $("totalCount").textContent = "0";
@@ -1589,7 +1638,10 @@ $("clearButton").addEventListener("click", () => {
 
   closeDrawer();
   removeImage();
+  updatePreview();
 });
+
+updatePreview();
 </script>
 
 </body>
